@@ -1,10 +1,14 @@
-import NavigationBar from "../Shared/NavigationBar";
+import SectionTitle from "../../Components/SectionTitle";
+import Banner from "./Banner";
 
 const Home = () => {
   return (
     <div>
-      <h2>I am a Web Developer</h2>
-      <NavigationBar />
+      <Banner />
+      <SectionTitle
+        subHeading={"From 11:30am to 10:00pm"}
+        heading={"Order Online"}
+      ></SectionTitle>
     </div>
   );
 };
