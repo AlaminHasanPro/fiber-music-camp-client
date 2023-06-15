@@ -7,13 +7,15 @@ import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Login = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
-  const { login, signInGoogle, auth } = useContext(AuthContext);
+  const { login, signInGoogle } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const { axiosSecure } = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -52,32 +54,28 @@ const Login = () => {
     const googleProvider = new GoogleAuthProvider();
     signInGoogle(googleProvider)
       .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        // const saveUser = {
-        //   email: loggedUser.email,
-        //   name: loggedUser.displayName,
-        //   photo: loggedUser?.photoURL,
-        //   role: "student",
-        // };
-        // // console.log(loggedUser);
-        // fetch("https://creativa-design-hub-server-site.vercel.app/users", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(saveUser),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     if (data.insertedId || !data.insertedId) {
-        //       reset();
-        //       Swal.fire("Good job!", "User created successfully", "success");
-        //       navigate(from, { replace: true });
-        //     }
-        //   });
+        const user = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          photo_url: result?.user?.photoURL,
+        };
+
+        axiosSecure.put(`/add-user?email=${user?.email}`, user).then((res) => {
+          if (res.data) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Login sucessfull",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+        navigate(from);
       })
-      .catch((err) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

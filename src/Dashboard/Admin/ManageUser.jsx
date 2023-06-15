@@ -1,12 +1,12 @@
-import React from "react";
-import useTitle from "../../../hook/useHook";
+
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hook/useAxiosSecure";
-import useUsers from "../../../hook/useUsers";
-import ManageUserCard from "../components/ManageUserCard";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useUsers from "../../Hooks/useUsers";
+import ManageUserCard from "./ManageUserCard";
+
 
 const ManageUser = () => {
-  useTitle("Manage Users");
+ 
 
   const { refetch, users } = useUsers();
   const { axiosSecure } = useAxiosSecure();

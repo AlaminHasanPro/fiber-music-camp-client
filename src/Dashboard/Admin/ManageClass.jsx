@@ -1,12 +1,13 @@
-import useTitle from "../../../hook/useHook";
-import useClasses from "../../../hook/useClasses";
-import useAxiosSecure from "../../../hook/useAxiosSecure";
+
 import Swal from "sweetalert2";
 import { useState } from "react";
-import ManageClassCard from "../components/ManageClassCard";
+import useClasses from "../../Hooks/useClasses";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import ManageClassCard from "./ManageClassCard";
+
 
 const ManageClass = () => {
-  useTitle("ManageClass");
+
 
   const { classes, refetch } = useClasses("all");
   const [isOpen, setIsOpen] = useState(false);

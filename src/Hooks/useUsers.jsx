@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { useAuthGlobally } from "../context/AuthProvider";
+
 import { AuthContext } from "../Provider/AuthProvider";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useUsers = () => {
-  const { axiosSecure } = useContext(AuthContext);
-  const { loading } = useAuthGlobally();
+  const { axiosSecure } = useAxiosSecure();
+  const { loading } = useContext(AuthContext);
+
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     enabled: !loading,
