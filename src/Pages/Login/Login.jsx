@@ -1,22 +1,34 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
 const Login = () => {
+  const [toggleIcon, setToggleIcon] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {};
   return (
     <>
       <div className="bg-white lg:w-4/12 md:6/12 pt-20 w-10/12 m-auto  ">
         <div className="py-8 px-8 rounded-xl shadow-2xl">
           <h1 className="font-medium text-2xl mt-3 text-center">Login</h1>
-          <form action="" className="mt-6">
+          <form onSubmit={handleSubmit(onSubmit)} action="" className="mt-6">
             <div className="my-5 text-sm">
-              <label htmlFor="username" className="block text-black">
-                Username
+              <label htmlFor="email" className="block text-black">
+                Email
               </label>
               <input
-                type="text"
-                autofocus=""
-                id="username"
+                {...register("email", { required: true })}
+                type="email"
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
-                placeholder="Username"
+                placeholder="Email"
               />
             </div>
             <div className="my-5 text-sm">
@@ -24,18 +36,57 @@ const Login = () => {
                 Password
               </label>
               <input
-                type="password"
-                id="password"
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 20,
+                })}
+                type={`${toggleIcon ? "text" : "password"}`}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
                 placeholder="Password"
               />
+              <span
+                onClick={() => setToggleIcon(!toggleIcon)}
+                className="absolute mt-7 mr-20 ml-2 toggle-icon"
+              >
+                {toggleIcon ? (
+                  <FontAwesomeIcon
+                    className="block"
+                    icon={faEyeSlash}
+                  ></FontAwesomeIcon>
+                ) : (
+                  <FontAwesomeIcon
+                    className="block"
+                    icon={faEye}
+                  ></FontAwesomeIcon>
+                )}
+              </span>
               <div className="flex justify-end mt-2 text-xs text-gray-600">
-                <a href="#">Forget Password?</a>
+                <>
+                  {errors.password?.type === "required" && (
+                    <p className="text-red-600">Password is required</p>
+                  )}
+                  {errors.password?.type === "minLength" && (
+                    <p className="text-red-600">
+                      Password must be 6 characters
+                    </p>
+                  )}
+                  {errors.password?.type === "maxLength" && (
+                    <p className="text-red-600">
+                      Password less than 20 characters
+                    </p>
+                  )}
+                  {errors.password?.type === "pattern" && (
+                    <p className="text-red-600">
+                      Password must be PATTERN rules
+                    </p>
+                  )}
+                </>
               </div>
             </div>
-            <button className="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">
-              Login
-            </button>
+
+            <input className="btn block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full" type="submit" value="Login" />
+           
           </form>
           <div className="flex md:justify-between justify-center items-center mt-10">
             <div
@@ -53,18 +104,18 @@ const Login = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-2 mt-7">
             <div>
-              <button className="text-center w-full text-white bg-blue-900 p-3 duration-300 rounded-sm hover:bg-blue-700">
-                Facebook
+              <button className="text-center w-full text-white bg-orange-700 p-3 duration-300 rounded-sm hover:bg-blue-700">
+                Google
               </button>
             </div>
             <div>
-              <button className="text-center w-full text-white bg-blue-400 p-3 duration-300 rounded-sm hover:bg-blue-500">
-                Twitter
+              <button className="text-center w-full text-white bg-slate-600 p-3 duration-300 rounded-sm hover:bg-blue-500">
+                GitHub
               </button>
             </div>
           </div>
           <p className="mt-12 text-xs text-center font-light text-gray-400">
-            Don't have an account?
+            Dont have an account?
             <Link to="/register" className="text-black font-medium">
               Create One
             </Link>

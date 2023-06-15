@@ -13,7 +13,6 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
@@ -46,6 +45,17 @@ const Register = () => {
               />
             </div>
             <div className="my-5 text-sm">
+              <label htmlFor="email" className="block text-black">
+                Email
+              </label>
+              <input
+                {...register("email", { required: true })}
+                type="email"
+                className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
+                placeholder="Email"
+              />
+            </div>
+            <div className="my-5 text-sm">
               <label htmlFor="photoURL" className="block text-black">
                 Photo URL
               </label>
@@ -74,7 +84,7 @@ const Register = () => {
               />
               <span
                 onClick={() => setToggleIcon(!toggleIcon)}
-                className=" bottom-4 right-4 toggle-icon"
+                className="absolute mt-7 mr-20 ml-2 toggle-icon"
               >
                 {toggleIcon ? (
                   <FontAwesomeIcon
@@ -122,8 +132,8 @@ const Register = () => {
                 placeholder="Confirm Password"
               />
               <span
-                  onClick={() => setToggleIconConfirm(!toggleIconConfirm)}
-                className=" bottom-4 right-4 toggle-icon"
+                onClick={() => setToggleIconConfirm(!toggleIconConfirm)}
+                className="toggle-icon absolute mt-7 mr-20 ml-2"
               >
                 {toggleIcon ? (
                   <FontAwesomeIcon
@@ -139,9 +149,11 @@ const Register = () => {
               </span>
               {<p className="text-red-700 ">{errorMassage}</p>}
             </div>
-            <button className="block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full">
-              Sign Up
-            </button>
+            <input
+              className="btn block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full"
+              type="submit"
+              value="Sign Up"
+            />
           </form>
           <div className="flex md:justify-between justify-center items-center mt-10">
             <div
@@ -170,9 +182,9 @@ const Register = () => {
             </div>
           </div>
           <p className="mt-12 text-xs text-center font-light text-gray-400">
-            Dont have an account?
-            <Link to="/register" className="text-black font-medium">
-              Create One
+            Already have an account?
+            <Link to="/login" className="text-black font-medium">
+              Login Here
             </Link>
           </p>
         </div>
