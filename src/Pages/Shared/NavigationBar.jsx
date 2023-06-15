@@ -1,6 +1,18 @@
+import { faLightbulb, faSun } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavigationBar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const [theme, setTheme] = useState(false);
+  const [navTheme, setNavTheme] = useState("light");
+  const handleLogout = () => {
+    logout()
+      .then((res) => {})
+      .catch((err) => {});
+  };
   const navOptions = (
     <>
       <li>
@@ -15,13 +27,10 @@ const NavigationBar = () => {
       <li>
         <Link to="/dashboard">Dashboard</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
 
-      {/* {user ? (
+      {user ? (
         <>
-          <button onClick={handleLogOut} className="btn btn-ghost">
+          <button onClick={handleLogout} className="btn btn-ghost">
             Log Out
           </button>
         </>
@@ -30,15 +39,31 @@ const NavigationBar = () => {
           <li>
             <Link to="/login">Login</Link>
           </li>
-          <li>
-            <Link to="/registration">Sign Up</Link>
-          </li>
         </>
-      )} */}
+      )}
     </>
   );
+
+  useEffect(() => {
+    window.addEventListener("load", handleToggle);
+    return () => {
+      window.removeEventListener("load", handleToggle);
+    };
+  }, []);
+  const handleToggle = () => {
+    const bodyElement = document.getElementsByTagName("body")[0];
+    const currentTheme = bodyElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setNavTheme(newTheme);
+    bodyElement.setAttribute("data-theme", newTheme);
+    setTheme(!theme);
+  };
   return (
-    <div className="">
+    <div
+      className={`${
+        navTheme === "light" ? "bg-[#ffffffd3]" : "bg-[#5e5e5ed3]"
+      }`}
+    >
       <div className="navbar fixed z-10  bg-slate-950 bg-opacity-20 text-white ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -66,11 +91,57 @@ const NavigationBar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-3xl font-bold ">
-            <span><span className="font-thin ">Fiber</span><span className="text-green-400">Music </span><span className="font-thin">Camp</span></span>{" "}
+            <span>
+              <span className="font-thin ">Fiber</span>
+              <span className="text-green-400">Music </span>
+              <span className="font-thin">Camp</span>
+            </span>{" "}
           </a>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
+        </div>
+        {user?.photoURL && (
+          <>
+            <div className="dropdown dropdown-end ms-3">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    title={`${user?.displayName ? user?.displayName : ""}`}
+                    className="hidden md:block"
+                    src={user?.photoURL}
+                    alt={user?.displayName}
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <Link to="/profile" className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
+        <div className="ms-3">
+          {theme ? (
+            <FontAwesomeIcon
+              onClick={handleToggle}
+              className="text-2xl cursor-pointer"
+              icon={faLightbulb}
+            ></FontAwesomeIcon>
+          ) : (
+            <FontAwesomeIcon
+              onClick={handleToggle}
+              className="text-2xl cursor-pointer"
+              icon={faSun}
+            ></FontAwesomeIcon>
+          )}
         </div>
       </div>
     </div>

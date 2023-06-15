@@ -1,19 +1,85 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
-
+  const { login, signInGoogle, auth } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    login(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Your Log In Successful",
+          showConfirmButton: false,
+          buttonsStyling: "#32c770",
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          buttonsStyling: {
+            color: "#32c770",
+            backgroundColor: "#32c770",
+          },
+
+          title: `${err.message}`,
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInGoogle(googleProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        // const saveUser = {
+        //   email: loggedUser.email,
+        //   name: loggedUser.displayName,
+        //   photo: loggedUser?.photoURL,
+        //   role: "student",
+        // };
+        // // console.log(loggedUser);
+        // fetch("https://creativa-design-hub-server-site.vercel.app/users", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(saveUser),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     if (data.insertedId || !data.insertedId) {
+        //       reset();
+        //       Swal.fire("Good job!", "User created successfully", "success");
+        //       navigate(from, { replace: true });
+        //     }
+        //   });
+      })
+      .catch((err) => {});
+  };
+
   return (
     <>
       <div className="bg-white lg:w-4/12 md:6/12 pt-20 w-10/12 m-auto  ">
@@ -85,8 +151,11 @@ const Login = () => {
               </div>
             </div>
 
-            <input className="btn block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full" type="submit" value="Login" />
-           
+            <input
+              className="btn block text-center text-white bg-gray-800 p-3 duration-300 rounded-sm hover:bg-black w-full"
+              type="submit"
+              value="Login"
+            />
           </form>
           <div className="flex md:justify-between justify-center items-center mt-10">
             <div
@@ -104,7 +173,10 @@ const Login = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-2 mt-7">
             <div>
-              <button className="text-center w-full text-white bg-orange-700 p-3 duration-300 rounded-sm hover:bg-blue-700">
+              <button
+                onClick={handleGoogleLogin}
+                className="text-center w-full text-white bg-orange-700 p-3 duration-300 rounded-sm hover:bg-blue-700"
+              >
                 Google
               </button>
             </div>

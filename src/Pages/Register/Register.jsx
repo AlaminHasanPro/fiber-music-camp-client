@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
@@ -12,13 +12,18 @@ const Register = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [toggleIconConfirm, setToggleIconConfirm] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
+  const navigate = useNavigate();
+  const { signUp, signInGoogle, ProfileUpdate, setReload } =
+    useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signInGoogle } = useContext(AuthContext);
+
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
@@ -30,6 +35,14 @@ const Register = () => {
     } else {
       setErrorMassage("");
     }
+    signUp(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   const handleGoogleLogin = () => {
     const googleProvider = new GoogleAuthProvider();
