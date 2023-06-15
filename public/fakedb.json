@@ -1,0 +1,62 @@
+[
+  {
+    "class_name": "Beginners Guitar Course",
+    "class_image": "https://images.pexels.com/photos/164729/pexels-photo-164729.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "instructor_name": "Shahriar Rahman Anik",
+    "instructor_email": "shahriarrahmananik@gmail.com",
+    "available_seats": 20,
+    "student_enroll": 0,
+    "price": 15,
+    "status": "Approved"
+  },
+  {
+    "class_name": "Pro Level Piano Course",
+    "class_image": "https://images.pexels.com/photos/2285585/pexels-photo-2285585.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "instructor_name": "Anisul Islam",
+    "instructor_email": "anisulislam@gmail.com",
+    "available_seats": 40,
+    "student_enroll": 0,
+    "price": 25,
+    "status": "Approved"
+  },
+  {
+    "class_name": "Digital Audio Workstation Course",
+    "class_image": "https://images.pexels.com/photos/10681799/pexels-photo-10681799.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "instructor_name": "MD Al Amin Hasan",
+    "instructor_email": "mdalaminhasanpro@gmail.com",
+    "available_seats": 9,
+    "student_enroll": 0,
+    "price": 75,
+    "status": "Approved"
+  },
+  {
+    "class_name": "Audio Mixing Course",
+    "class_image": "https://images.pexels.com/photos/7269734/pexels-photo-7269734.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "instructor_name": "RD Rixen",
+    "instructor_email": "rdRixen@gmail.com",
+    "available_seats": 34,
+    "student_enroll": 0,
+    "price": 115,
+    "status": "Approved"
+  },
+  {
+    "class_name": "EDM Music Compose",
+    "class_image": "https://images.pexels.com/photos/15262989/pexels-photo-15262989/free-photo-of-dj-decks-nightclub-close-up.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "instructor_name": "DEV",
+    "instructor_email": "devnextlevel@gmail.com",
+    "available_seats": 4,
+    "student_enroll": 0,
+    "price": 23,
+    "status": "Approved"
+  },
+  {
+    "class_name": "Professional Violin",
+    "class_image": "https://images.pexels.com/photos/7095506/pexels-photo-7095506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "instructor_name": "Vasudev",
+    "instructor_email": "mixwithvasudev@gmail.com",
+    "available_seats": 27,
+    "student_enroll": 0,
+    "price": 46,
+    "status": "Approved"
+  }
+]
