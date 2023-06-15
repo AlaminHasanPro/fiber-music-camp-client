@@ -10,8 +10,6 @@ const InstructorsCard = ({ instructor }) => {
       />
       <h2 className="pt-2 m-0 leading-4 font-semibold">{name}</h2>
       <p>Email: {email}</p>
-
-      <button className="btn btn-outline btn-accent">Enroll Now</button>
     </div>
   );
 };
