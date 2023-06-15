@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Register = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
@@ -15,6 +18,7 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { signInGoogle } = useContext(AuthContext);
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
@@ -26,6 +30,37 @@ const Register = () => {
     } else {
       setErrorMassage("");
     }
+  };
+  const handleGoogleLogin = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInGoogle(googleProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        // const saveUser = {
+        //   email: loggedUser.email,
+        //   name: loggedUser.displayName,
+        //   photo: loggedUser?.photoURL,
+        //   role: "student",
+        // };
+        // // console.log(loggedUser);
+        // fetch("https://creativa-design-hub-server-site.vercel.app/users", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(saveUser),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     if (data.insertedId || !data.insertedId) {
+        //       reset();
+        //       Swal.fire("Good job!", "User created successfully", "success");
+        //       navigate(from, { replace: true });
+        //     }
+        //   });
+      })
+      .catch((err) => {});
   };
   return (
     <>
@@ -171,7 +206,10 @@ const Register = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-2 mt-7">
             <div>
-              <button className="text-center w-full text-white bg-orange-700 p-3 duration-300 rounded-sm hover:bg-blue-700">
+              <button
+                onClick={handleGoogleLogin}
+                className="text-center w-full text-white bg-orange-700 p-3 duration-300 rounded-sm hover:bg-blue-700"
+              >
                 Google
               </button>
             </div>
