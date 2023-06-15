@@ -33,17 +33,29 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     return signOut(auth);
   };
-
-  useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
+  useEffect(()=> {
+    const unsubscribe = onAuthStateChanged(auth, correntUser => {
+        setUser(correntUser)
+        if(correntUser) {
+            fetch(`http://localhost:3000/jwt?email=${correntUser.email}`,
+            {
+                method: "POST"
+            })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem("access-token", data.token)
+            })
+        }
+        else {
+            localStorage.removeItem("access-token")
+        }
+        setLoading(false)
+    })
     return () => {
-      return unSubscribe();
-    };
-  }, []);
-
+        return unsubscribe()
+    }
+}, [])
+  
   const ProfileUpdate = (name, PhotoUrl) => {
     setLoading(true);
     return updateProfile(auth.currentUser, {

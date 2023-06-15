@@ -10,8 +10,8 @@ const NavigationBar = () => {
   const [navTheme, setNavTheme] = useState("light");
   const handleLogout = () => {
     logout()
-      .then((res) => {})
-      .catch((err) => {});
+      .then(() => {})
+      .catch(() => {});
   };
   const navOptions = (
     <>
