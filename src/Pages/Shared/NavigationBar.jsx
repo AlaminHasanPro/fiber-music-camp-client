@@ -13,7 +13,7 @@ const NavigationBar = () => {
         <Link to="/classes">Classes</Link>
       </li>
       <li>
-        <Link to="/classes">Classes</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>
@@ -38,8 +38,8 @@ const NavigationBar = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar fixed z-10  bg-black bg-opacity-20 text-white ">
+    <div className="">
+      <div className="navbar fixed z-10  bg-slate-950 bg-opacity-20 text-white ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,10 +65,12 @@ const NavigationBar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">FiberMusic Camp</a>
+          <a className="btn btn-ghost normal-case text-3xl font-bold ">
+            <span><span className="font-thin ">Fiber</span><span className="text-green-400">Music </span><span className="font-thin">Camp</span></span>{" "}
+          </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+        <div className="navbar-end hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
         </div>
       </div>
     </div>

@@ -1,14 +1,26 @@
 import SectionTitle from "../../Components/SectionTitle";
 import Banner from "./Banner";
+import ExtraSection from "./ExtraSection";
+import Pricing from "./Pricing";
 
 const Home = () => {
   return (
     <div>
       <Banner />
       <SectionTitle
-        subHeading={"From 11:30am to 10:00pm"}
-        heading={"Order Online"}
+        subHeading={"See Our Best "}
+        heading={"Courses"}
       ></SectionTitle>
+      <SectionTitle
+        subHeading={"See Our Best "}
+        heading={"Instructors"}
+      ></SectionTitle>
+      <SectionTitle
+        subHeading={"Check Out Our"}
+        heading={"Service Payout"}
+      ></SectionTitle>
+      <Pricing />
+      <ExtraSection />
     </div>
   );
 };
