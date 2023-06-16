@@ -2,8 +2,9 @@
 import Swal from "sweetalert2";
 import { useState } from "react";
 import useClasses from "../../Hooks/useClasses";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
 import ManageClassCard from "./ManageClassCard";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const ManageClass = () => {

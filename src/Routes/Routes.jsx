@@ -1,6 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import ManageClass from "../Dashboard/Admin/ManageClass";
 import ManageUser from "../Dashboard/Admin/ManageUser";
+import AddClass from "../Dashboard/Instructor/AddClass";
+import Edit from "../Dashboard/Instructor/Edit";
+import MyClass from "../Dashboard/Instructor/MyClass";
+import MyEnrollClass from "../Dashboard/Student/EnrollClass";
+import MySelectClass from "../Dashboard/Student/MySelectClass";
+import Payment from "../Dashboard/Student/Payment";
+import PaymentHistory from "../Dashboard/Student/PaymentHistory";
 import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import Classes from "../Pages/Classes/Classes";
@@ -9,6 +16,7 @@ import Instructors from "../Pages/Instractors/Instructors";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AdminOnly from "../Private/AdminOnly";
+import InstructorOnly from "../Private/Instructor";
 import PrivateRouter from "../Private/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -47,30 +55,30 @@ const router = createBrowserRouter([
     ),
     // errorElement: <Error />,
     children: [
-      // {
-      //   path: "/dashboard/add-class",
-      //   element: (
-      //     <InstructorOnly>
-      //       <AddClass />
-      //     </InstructorOnly>
-      //   ),
-      // },
-      // {
-      //   path: "/dashboard/my-class",
-      //   element: (
-      //     <InstructorOnly>
-      //       <MyClass />
-      //     </InstructorOnly>
-      //   ),
-      // },
-      // {
-      //   path: "/dashboard/:id/edit",
-      //   element: (
-      //     <InstructorOnly>
-      //       <Edit />
-      //     </InstructorOnly>
-      //   ),
-      // },
+      {
+        path: "/dashboard/add-class",
+        element: (
+          <InstructorOnly>
+            <AddClass />
+          </InstructorOnly>
+        ),
+      },
+      {
+        path: "/dashboard/my-class",
+        element: (
+          <InstructorOnly>
+            <MyClass />
+          </InstructorOnly>
+        ),
+      },
+      {
+        path: "/dashboard/:id/edit",
+        element: (
+          <InstructorOnly>
+            <Edit />
+          </InstructorOnly>
+        ),
+      },
       {
         path: "/dashboard/manage-class",
         element: (
@@ -87,22 +95,22 @@ const router = createBrowserRouter([
           </AdminOnly>
         ),
       },
-      // {
-      //   path: "/dashboard/my-enroll-class",
-      //   element: <MyEnrollClass />,
-      // },
-      // {
-      //   path: "/dashboard/my-select-class",
-      //   element: <MySelectClass />,
-      // },
-      // {
-      //   path: "/dashboard/payment",
-      //   element: <Payment />,
-      // },
-      // {
-      //   path: "/dashboard/payment-history",
-      //   element: <PaymentHistory />,
-      // },
+      {
+        path: "/dashboard/my-enroll-class",
+        element: <MyEnrollClass />,
+      },
+      {
+        path: "/dashboard/my-select-class",
+        element: <MySelectClass />,
+      },
+      {
+        path: "/dashboard/payment",
+        element: <Payment />,
+      },
+      {
+        path: "/dashboard/payment-history",
+        element: <PaymentHistory />,
+      },
     ],
   },
 ]);

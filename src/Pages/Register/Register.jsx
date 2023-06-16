@@ -6,16 +6,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const Register = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [toggleIconConfirm, setToggleIconConfirm] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
   const navigate = useNavigate();
-  const { signUp, signInGoogle, ProfileUpdate, setReload } =
+  const { signUp, signInGoogle} =
     useContext(AuthContext);
   const location = useLocation();
+  const { axiosSecure } = useAxiosSecure();
   const from = location.state?.from?.pathname || "/";
 
   const {
@@ -29,6 +32,8 @@ const Register = () => {
     const password = data.password;
     const confirmPassword = data.confirmPassword;
     const name = data.name;
+    const photo = data.photoURL;
+
     if (password !== confirmPassword) {
       setErrorMassage("Password an confirm password doesn't match");
       return;
@@ -38,7 +43,26 @@ const Register = () => {
     signUp(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        updateProfile(loggedUser, { displayName: name, photoURL: photo });
+        const user = {
+          name: name,
+          email: email,
+          photo_url: photo,
+        };
+
+        axiosSecure.put(`/add-user?email=${user?.email}`, user).then((res) => {
+          console.log(res);
+          if (res.data) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Sign Up sucessfull",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -48,32 +72,28 @@ const Register = () => {
     const googleProvider = new GoogleAuthProvider();
     signInGoogle(googleProvider)
       .then((result) => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        // const saveUser = {
-        //   email: loggedUser.email,
-        //   name: loggedUser.displayName,
-        //   photo: loggedUser?.photoURL,
-        //   role: "student",
-        // };
-        // // console.log(loggedUser);
-        // fetch("https://creativa-design-hub-server-site.vercel.app/users", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(saveUser),
-        // })
-        //   .then((res) => res.json())
-        //   .then((data) => {
-        //     if (data.insertedId || !data.insertedId) {
-        //       reset();
-        //       Swal.fire("Good job!", "User created successfully", "success");
-        //       navigate(from, { replace: true });
-        //     }
-        //   });
+        const user = {
+          name: result?.user?.displayName,
+          email: result?.user?.email,
+          photo_url: result?.user?.photoURL,
+        };
+
+        axiosSecure.put(`/add-user?email=${user?.email}`, user).then((res) => {
+          if (res.data) {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Login sucessfull",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+        navigate(from);
       })
-      .catch((err) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -124,7 +144,7 @@ const Register = () => {
                   minLength: 6,
                   maxLength: 20,
                   pattern:
-                    /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}/,
+                    /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{6}/,
                 })}
                 type={`${toggleIcon ? "text" : "password"}`}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"

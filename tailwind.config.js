@@ -2,7 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        "dashboard-md": "280px auto",
+      },
+      spacing: {
+        "dashboard-md": "280px",
+        "dashboard-body": "calc(100% - 280px)",
+      },
+    },
   },
   plugins: [require("daisyui")],
 };

@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  
+
   const signInGoogle = (provider) => {
     setLoading(true);
     return signInWithPopup(auth, provider);
@@ -33,36 +33,29 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     return signOut(auth);
   };
-  useEffect(()=> {
-    const unsubscribe = onAuthStateChanged(auth, correntUser => {
-        setUser(correntUser)
-        if(correntUser) {
-            fetch(`http://localhost:3000/jwt?email=${correntUser.email}`,
-            {
-                method: "POST"
-            })
-            .then(res => res.json())
-            .then(data => {
-                localStorage.setItem("access-token", data.token)
-            })
-        }
-        else {
-            localStorage.removeItem("access-token")
-        }
-        setLoading(false)
-    })
-    return () => {
-        return unsubscribe()
-    }
-}, [])
-  
-  const ProfileUpdate = (name, PhotoUrl) => {
-    setLoading(true);
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: PhotoUrl,
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (correntUser) => {
+      setUser(correntUser);
+      if (correntUser) {
+        fetch(
+          `https://fiber-music-camp-server.vercel.app/jwt?email=${correntUser.email}`,
+          {
+            method: "POST",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("access-token", data.token);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+      }
+      setLoading(false);
     });
-  };
+    return () => {
+      return unsubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,
@@ -71,7 +64,6 @@ const AuthProvider = ({ children }) => {
     login,
     logout,
     loading,
-    ProfileUpdate,
     auth,
   };
   return (
