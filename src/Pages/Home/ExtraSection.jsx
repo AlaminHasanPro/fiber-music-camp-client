@@ -3,11 +3,11 @@ const ExtraSection = () => {
     <div>
       <>
         {/* component */}
-        <div className="max-w-5xl mx-auto bg-gradient-to-b from-pink-100 to-purple-200">
+        <div className="max-w-5xl mx-auto bg-gradient-to-b from-pink-50 mb-10 to-purple-200">
           <div className="container m-auto px-6 py-20 md:px-12 lg:px-20">
             <div className="m-auto text-center lg:w-8/12 xl:w-7/12">
               <h2 className="text-2xl text-pink-900 font-bold md:text-4xl">
-                A Tailus Blocks subscription gives you access to our components
+                A Student subscription gives him access to our Hidden Service
                 and more.
               </h2>
             </div>
@@ -19,7 +19,7 @@ const ExtraSection = () => {
                 />
                 <div className="relative p-6 space-y-6 lg:p-8">
                   <h3 className="text-3xl text-gray-700 font-semibold text-center">
-                    Organisation
+                    Courses Offer
                   </h3>
                   <div>
                     <div className="relative flex justify-around">
@@ -44,15 +44,15 @@ const ExtraSection = () => {
                   >
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>First premium advantage</span>
+                      <span>First payment of the course</span>
                     </li>
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>Second advantage weekly</span>
+                      <span>Get Unlimited Support </span>
                     </li>
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>Third advantage donate to project</span>
+                      <span>Offline/Online Conceptual Session</span>
                     </li>
                   </ul>
                   <p className="flex items-center justify-center space-x-4 text-lg text-gray-600 text-center">
@@ -93,24 +93,23 @@ const ExtraSection = () => {
                   <ul role="list" className="space-y-4 py-6 text-gray-600">
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>First premium advantage</span>
+                      <span>Get New advantage</span>
                     </li>
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>Second advantage weekly</span>
+                      <span>Ensure Our Support 24 Hours</span>
                     </li>
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>Third advantage donate to project</span>
+                      <span>Under Low Pricing Rate</span>
                     </li>
                     <li className="space-x-2">
                       <span className="text-purple-500 font-semibold">✓</span>
-                      <span>Fourth, access to all components weekly</span>
+                      <span>24 Hour Supports</span>
                     </li>
                   </ul>
                   <p className="text-gray-700">
-                    Team can be any size, and you can add or switch members as
-                    needed. Companies using our platform include:
+                  Our New Sponsorships Companies / platforms:
                   </p>
                   <div className="mt-6 flex justify-between gap-6">
                     <img

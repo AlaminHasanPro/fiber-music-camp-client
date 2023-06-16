@@ -25,7 +25,7 @@ const Pricing = () => {
             <div className="w-full px-4">
               <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
                 <span className="font-semibold text-lg text-primary mb-2 block">
-                  Pricing Table
+                  Studio Booking
                 </span>
                 <h2
                   className="
@@ -37,11 +37,10 @@ const Pricing = () => {
             mb-4
             "
                 >
-                  Our Pricing Plan
+                  Pricing Plan
                 </h2>
                 <p className="text-base text-body-color">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+                  You can record your track in our studio. I will charge in low pricing rate. See our hourly, day, weekly pricing plan.
                 </p>
               </div>
             </div>
@@ -66,12 +65,12 @@ const Pricing = () => {
          "
               >
                 <span className="text-primary font-semibold text-lg block mb-4">
-                  Personal
+                  Basic
                 </span>
                 <h2 className="font-bold text-dark mb-5 text-[42px]">
-                  $59
+                  $20
                   <span className="text-base text-body-color font-medium">
-                    / year
+                    / Hour
                   </span>
                 </h2>
                 <p
@@ -82,26 +81,26 @@ const Pricing = () => {
             border-b border-[#F2F2F2]
             "
                 >
-                  Perfect for using in a personal website or a client project.
+                  Perfect for recording in a personal track or a client project.
                 </p>
                 <div className="mb-7">
                   <p className="text-base text-body-color leading-loose mb-1">
-                    1 User
+                   2 Track
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    All UI components
+                    Adding Piano / Guitar Sound
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Lifetime access
+                    Using Basic Filter
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Free updates
+                    Hermonize effects
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Use on 1 (one) project
+                   2 Exports
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    3 Months support
+                   Wav/MP3
                   </p>
                 </div>
                 <a
@@ -121,7 +120,7 @@ const Pricing = () => {
             transition
             "
                 >
-                  Choose Personal
+                  Choose Basic
                 </a>
                 <div>
                   <span className="absolute right-0 top-7 z-[-1]">
@@ -413,12 +412,12 @@ const Pricing = () => {
          "
               >
                 <span className="text-primary font-semibold text-lg block mb-4">
-                  Business
+                 Advance Plan
                 </span>
                 <h2 className="font-bold text-dark mb-5 text-[42px]">
-                  $199
+                  $130
                   <span className="text-base text-body-color font-medium">
-                    / year
+                    / Day
                   </span>
                 </h2>
                 <p
@@ -429,26 +428,26 @@ const Pricing = () => {
             border-b border-[#F2F2F2]
             "
                 >
-                  Perfect for using in a Business website or a client project.
+                  Perfect for compose Background Music and Complete Recording Songs.
                 </p>
                 <div className="mb-7">
                   <p className="text-base text-body-color leading-loose mb-1">
-                    5 Users
+                    5 Tracks
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    All UI components
+                    Add Advance Instrument Sounds
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Lifetime access
+                    Advance Filters
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Free updates
+                    Adding Bgm Highly ORC Inst.
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Use on 3 (Three) project
+                  5 Exports
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    4 Months support
+                    Wav/Mp3/Project
                   </p>
                 </div>
                 <a
@@ -468,7 +467,7 @@ const Pricing = () => {
             transition
             "
                 >
-                  Choose Business
+                  Choose Advance
                 </a>
                 <div>
                   <span className="absolute right-0 top-7 z-[-1]">
@@ -763,9 +762,9 @@ const Pricing = () => {
                   Professional
                 </span>
                 <h2 className="font-bold text-dark mb-5 text-[42px]">
-                  $256
+                  $450
                   <span className="text-base text-body-color font-medium">
-                    / year
+                    / Week
                   </span>
                 </h2>
                 <p
@@ -776,27 +775,26 @@ const Pricing = () => {
             border-b border-[#F2F2F2]
             "
                 >
-                  Perfect for using in a Professional website or a client
-                  project.
+                  Perfect for Complete full Projects like movie, bgm, orchestra etc.
                 </p>
                 <div className="mb-7">
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Unlimited Users
+                    Unlimited Tracks
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    All UI components
+                    All Instrument You Need
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Lifetime access
+                    Professional Filters and Effects.
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Free updates
+                    Ulitmate use of all machines
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    Use on Unlimited project
+                    Ultimate Exports
                   </p>
                   <p className="text-base text-body-color leading-loose mb-1">
-                    12 Months support
+                   Wav/MP3/Projects/Steems/All Inst.
                   </p>
                 </div>
                 <a
