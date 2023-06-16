@@ -3,7 +3,7 @@ const ExtraSection = () => {
     <div>
       <>
         {/* component */}
-        <div className="bg-gradient-to-b from-pink-100 to-purple-200">
+        <div className="max-w-5xl mx-auto bg-gradient-to-b from-pink-100 to-purple-200">
           <div className="container m-auto px-6 py-20 md:px-12 lg:px-20">
             <div className="m-auto text-center lg:w-8/12 xl:w-7/12">
               <h2 className="text-2xl text-pink-900 font-bold md:text-4xl">

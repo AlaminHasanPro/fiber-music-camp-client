@@ -23,10 +23,10 @@ const Home = () => {
     <div>
       <Banner />
       <SectionTitle
-        subHeading={"See Our Best "}
+        subHeading={"Meet Our Best"}
         heading={"Instructors"}
       ></SectionTitle>
-      <div className=" max-w-7xl mx-auto grid grid-flow-row-dense grid-cols-2 gap-3 justify-between sm:grid-cols-3 md:grid-cols-4">
+      <div className="  max-w-5xl mx-auto grid grid-flow-row-dense grid-cols gap-3 justify-between  md:grid-cols-3">
         {instructors.map((instructor, i) => (
           <InstructorsHomeCard
             key={i}
@@ -39,16 +39,12 @@ const Home = () => {
         heading={"Courses"}
       ></SectionTitle>
 
-      <div className=" max-w-7xl mx-auto grid grid-flow-row-dense grid-cols-2 gap-3 justify-between sm:grid-cols-3 md:grid-cols-4">
-      {
-        popularClasses.map((classes, i)=> <ClassesHomeCard key={i} classes={classes}></ClassesHomeCard> )
-      }
+      <div className=" max-w-5xl mx-auto grid grid-flow-row-dense grid-cols gap-3 justify-between  md:grid-cols-3">
+        {popularClasses.map((classes, i) => (
+          <ClassesHomeCard key={i} classes={classes}></ClassesHomeCard>
+        ))}
       </div>
 
-      <SectionTitle
-        subHeading={"Check Out Our"}
-        heading={"Service Payout"}
-      ></SectionTitle>
       <Pricing />
       <ExtraSection />
     </div>
