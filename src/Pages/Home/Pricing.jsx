@@ -1,6 +1,9 @@
+import { Fade } from "react-awesome-reveal";
+
 const Pricing = () => {
   return (
     <>
+   
       {/* component */}
       <link
         rel="stylesheet"
@@ -1091,6 +1094,7 @@ const Pricing = () => {
         </div>
       </section>
       {/* ====== Pricing Section End */}
+ 
     </>
   );
 };

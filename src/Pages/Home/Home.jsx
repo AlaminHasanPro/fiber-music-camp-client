@@ -8,6 +8,8 @@ import ExtraSection from "./ExtraSection";
 import InstructorsHomeCard from "./InstructorsHomeCard";
 import Pricing from "./Pricing";
 
+import { motion } from "framer-motion";
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
   const { popularClasses } = usePopularClasses();
@@ -22,7 +24,6 @@ const Home = () => {
 
   return (
     <div>
-     
       <Banner />
       <SectionTitle
         subHeading={"Meet Our Best"}
@@ -46,9 +47,12 @@ const Home = () => {
           <ClassesHomeCard key={i} classes={classes}></ClassesHomeCard>
         ))}
       </div>
-
-      <Pricing />
-      <ExtraSection />
+      <Fade delay={200}>
+        <Pricing />
+      </Fade>
+      <Fade delay={200}>
+        <ExtraSection />
+      </Fade>
     </div>
   );
 };
