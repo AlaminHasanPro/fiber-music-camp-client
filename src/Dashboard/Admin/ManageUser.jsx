@@ -44,7 +44,7 @@ const ManageUser = () => {
   };
 
   return (
-    <div className="max-w-[1240px] mx-auto my-10">
+    <div className="max-w-[1240px]  mx-auto my-10">
       <h2 className="my-10 text-3xl font-bold">Manage User:{users.length} </h2>
       <section className=" h-[500px] mt-2 overflow-x-auto relative">
         <table className="w-full text-white">

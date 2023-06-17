@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="  max-w-5xl mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
             <div className="sm:col-span-2">
               <h1 className="max-w-lg text-xl font-semibold tracking-tight xl:text-2xl dark:text-white">
-                Subscribe our newsletter to get update.
+                Subscribe to get Our New update.
               </h1>
               <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
                 <input

@@ -28,7 +28,7 @@ const Home = () => {
         subHeading={"Meet Our Best"}
         heading={"Instructors"}
       ></SectionTitle>
-      <div className="  max-w-5xl mx-auto grid grid-flow-row-dense grid-cols gap-3 justify-between  md:grid-cols-3">
+      <div className=" md:max-w-5xl md:mx-auto ml-10 grid grid-flow-row-dense grid-cols gap-3 justify-between  md:grid-cols-3">
         {instructors.map((instructor, i) => (
           <InstructorsHomeCard
             key={i}
@@ -41,7 +41,7 @@ const Home = () => {
         heading={"Courses"}
       ></SectionTitle>
 
-      <div className=" max-w-5xl mx-auto grid grid-flow-row-dense grid-cols gap-3 justify-between  md:grid-cols-3">
+      <div className=" md:max-w-5xl md:mx-auto ml-10   grid grid-flow-row-dense grid-cols gap-3 justify-between  md:grid-cols-3">
         {popularClasses.map((classes, i) => (
           <ClassesHomeCard key={i} classes={classes}></ClassesHomeCard>
         ))}

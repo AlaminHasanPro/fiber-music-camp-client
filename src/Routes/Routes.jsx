@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         <Dashboard />
       </PrivateRouter>
     ),
-    // errorElement: <Error />,
+    errorElement: <NotFoundPage></NotFoundPage>,
     children: [
       {
         path: "/dashboard/add-class",

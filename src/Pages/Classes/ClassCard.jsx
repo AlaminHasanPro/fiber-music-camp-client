@@ -9,7 +9,7 @@ const ClassCard = ({ course, seletedClass }) => {
     price,
     instructor_name,
     available_seats,
-    role,
+
   } = course;
 
   return (

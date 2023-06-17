@@ -85,7 +85,7 @@ const NavigationBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="text-black menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navOptions}
             </ul>
@@ -99,7 +99,7 @@ const NavigationBar = () => {
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
+          <ul className="menu menu-horizontal px-1 text-lg ">{navOptions}</ul>
         </div>
         {user?.photoURL && (
           <>

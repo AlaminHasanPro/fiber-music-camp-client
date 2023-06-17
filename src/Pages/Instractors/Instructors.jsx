@@ -8,9 +8,8 @@ const Instructors = () => {
       {/* component */}
       <div className="bg-black">
         <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center z-10 content-center absolute text-center w-full md:text-4xl">
-            Meet Our Best 
-          </h1>
+        <h1 className="text-3xl tracking-wider text-white  bg-black opacity-50 uppercase font-bold p-4 self-center z-10 content-center absolute text-center w-full md:text-4xl">
+          See Details Of Our <br /> Instructor And Mentor    </h1>
           <img
             className="w-full object-cover h-[400px] blur-[2px] block mx-auto  sm:block sm:w-full"
             src="https://media.istockphoto.com/id/1055509654/photo/success-has-always-been-our-collective-goal.jpg?s=612x612&w=0&k=20&c=avN5NHrfvixa_aEFv2vMzsWtbkvBj54s3kAbhodtwuc="
@@ -20,15 +19,16 @@ const Instructors = () => {
           />
         </div>
       </div>
+      
       <div className="p-5 mx-auto max-w-screen-xl">
-        <h2 className="font-bold uppercase text-xl pb-4">Best sellers</h2>
+        <h2 className="font-bold uppercase text-xl pb-4">Our Instructors</h2>
         <div className="grid grid-flow-row-dense grid-cols-2 gap-3 justify-between sm:grid-cols-3 md:grid-cols-4">
           {instructors.map((instructor, i) => (
             <InstructorsCard key={i} instructor={instructor}></InstructorsCard>
           ))}
         </div>
       </div>
-      <div className="bg-gray-200">
+      {/* <div className="bg-gray-200">
         <section className="py-5 mx-auto max-w-screen-xl  sm:flex flex-grow-0 sm:p-5">
           <article className="flex-col justify-center inline-flex self-stretch  p-6">
             <h2 className="uppercase font-semibold text-xl">Design</h2>
@@ -51,7 +51,7 @@ const Instructors = () => {
             />
           </figure>
         </section>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -7,61 +7,56 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import ClassCard from "./ClassCard";
 
 const Classes = () => {
-  const { classes } = useClasses('Approved');
-    const {user} = useContext(AuthContext)
-    const navigate = useNavigate()
-    const {axiosSecure} = useAxiosSecure()
-    const seletedClass = async (singleClass) => {
+  const { classes } = useClasses("Approved");
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { axiosSecure } = useAxiosSecure();
+  const seletedClass = async (singleClass) => {
+    if (user?.email) {
+      const addToClass = {
+        class_id: singleClass._id,
+        class_name: singleClass.class_name,
+        class_image: singleClass.class_image,
+        instructor_name: singleClass.instructor_name,
+        instructor_email: singleClass.instructor_email,
+        price: singleClass.price,
+        email: user?.email,
+      };
 
-        if(user?.email) {
-            const addToClass = {
-                class_id: singleClass._id,
-                class_name : singleClass.class_name,
-                class_image : singleClass.class_image,
-                instructor_name : singleClass.instructor_name,
-                instructor_email : singleClass.instructor_email,
-                price : singleClass.price,
-                email: user?.email
-            }
-
-
-            const res = await axiosSecure.post("/select-class", addToClass)
-            if(res.data.insertedId) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'This class is selectd',
-                    showConfirmButton: false,
-                    timer: 1000
-                  })
-            }
-        } 
-        else {
-            Swal.fire({
-                title: 'Login In First',
-                text: "Without login you are not select any class",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'login'
-              }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate("/login")
-                }
-              })
+      const res = await axiosSecure.post("/select-class", addToClass);
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "This class is selectd",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      }
+    } else {
+      Swal.fire({
+        title: "Login In First",
+        text: "Without login you are not select any class",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "login",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login");
         }
-
-
+      });
     }
-  
+  };
+
   return (
     <>
       {/* component */}
       <div className="bg-black">
         <div className="flex relative text-center">
-          <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center z-10 content-center absolute text-center w-full md:text-4xl">
-            Welcome to Lightning deals
+          <h1 className="text-3xl tracking-wider text-white  bg-black opacity-50 uppercase font-bold p-4 self-center z-10 content-center absolute text-center w-full md:text-4xl">
+            Enroll Our Class To Develop <br /> Your Secret Skills
           </h1>
           <img
             className="w-full object-cover h-[400px] blur-[2px] block mx-auto  sm:block sm:w-full"
@@ -73,14 +68,18 @@ const Classes = () => {
         </div>
       </div>
       <div className="p-5 mx-auto max-w-screen-xl">
-        <h2 className="font-bold uppercase text-xl pb-4">Best sellers</h2>
+        <h2 className="font-bold uppercase text-xl pb-4">Our Courses</h2>
         <div className="grid grid-flow-row-dense grid-cols-2 gap-3 justify-between sm:grid-cols-3 md:grid-cols-4">
           {classes.map((course, i) => (
-            <ClassCard seletedClass={seletedClass} key={i} course={course}></ClassCard>
+            <ClassCard
+              seletedClass={seletedClass}
+              key={i}
+              course={course}
+            ></ClassCard>
           ))}
         </div>
       </div>
-      <div className="bg-gray-200">
+      {/* <div className="bg-gray-200">
         <section className="py-5 mx-auto max-w-screen-xl  sm:flex flex-grow-0 sm:p-5">
           <article className="flex-col justify-center inline-flex self-stretch  p-6">
             <h2 className="uppercase font-semibold text-xl">Design</h2>
@@ -103,7 +102,7 @@ const Classes = () => {
             />
           </figure>
         </section>
-      </div>
+      </div> */}
     </>
   );
 };
