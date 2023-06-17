@@ -14,6 +14,7 @@ import Classes from "../Pages/Classes/Classes";
 import Home from "../Pages/Home/Home";
 import Instructors from "../Pages/Instractors/Instructors";
 import Login from "../Pages/Login/Login";
+import NotFoundPage from "../Pages/NotFountPage";
 import Register from "../Pages/Register/Register";
 import AdminOnly from "../Private/AdminOnly";
 import InstructorOnly from "../Private/Instructor";
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <NotFoundPage></NotFoundPage>,
     children: [
       {
         path: "/",

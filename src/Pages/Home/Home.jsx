@@ -8,6 +8,7 @@ import ExtraSection from "./ExtraSection";
 import InstructorsHomeCard from "./InstructorsHomeCard";
 import Pricing from "./Pricing";
 
+
 const Home = () => {
   const { popularClasses } = usePopularClasses();
   const { axiosSecure } = useAxiosSecure();
@@ -21,6 +22,7 @@ const Home = () => {
 
   return (
     <div>
+     
       <Banner />
       <SectionTitle
         subHeading={"Meet Our Best"}

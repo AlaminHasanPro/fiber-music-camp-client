@@ -9,7 +9,7 @@ const Instructors = () => {
       <div className="bg-black">
         <div className="flex relative text-center">
           <h1 className="text-3xl tracking-wider text-white text-sha uppercase font-bold p-4 self-center z-10 content-center absolute text-center w-full md:text-4xl">
-            Welcome to Lightning deals
+            Meet Our Best 
           </h1>
           <img
             className="w-full object-cover h-[400px] blur-[2px] block mx-auto  sm:block sm:w-full"

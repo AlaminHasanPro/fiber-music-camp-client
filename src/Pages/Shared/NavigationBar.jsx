@@ -90,13 +90,13 @@ const NavigationBar = () => {
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-3xl font-bold ">
+          <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold ">
             <span>
               <span className="font-thin ">Fiber</span>
               <span className="text-green-400">Music </span>
               <span className="font-thin">Camp</span>
             </span>{" "}
-          </a>
+          </Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-lg">{navOptions}</ul>
