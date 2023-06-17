@@ -9,8 +9,11 @@ const ClassCard = ({ course, seletedClass }) => {
     price,
     instructor_name,
     available_seats,
-
+    role,
   } = course;
+
+  // disabled={avilable_seats === 0 || role === 'admin' || role === 'instructor'} className={`bg-[#4c5696] w-full mx-auto py-2 rounded-md text-white ${avilable_seats === 0
+  //   ? 'bg-[#20243a]' : 'bg-[#4c5696]'} `}
 
   return (
     <div className={available_seats === 0 ? "bg-red-200" : ""}>
@@ -37,6 +40,9 @@ const ClassCard = ({ course, seletedClass }) => {
           <p className="text-green-500 italic font-medium">In Stock</p>
         </div>
         <button
+          disabled={
+            available_seats === 0 || role === "admin" || role === "instructor"
+          }
           onClick={() => seletedClass(course)}
           className="btn btn-outline btn-accent w-full"
         >

@@ -15,8 +15,7 @@ const Register = () => {
   const [toggleIconConfirm, setToggleIconConfirm] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
   const navigate = useNavigate();
-  const { signUp, signInGoogle} =
-    useContext(AuthContext);
+  const { signUp, signInGoogle } = useContext(AuthContext);
   const location = useLocation();
   const { axiosSecure } = useAxiosSecure();
   const from = location.state?.from?.pathname || "/";
@@ -143,8 +142,7 @@ const Register = () => {
                   required: true,
                   minLength: 6,
                   maxLength: 20,
-                  pattern:
-                    /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{6}/,
+                  pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{6}/,
                 })}
                 type={`${toggleIcon ? "text" : "password"}`}
                 className="rounded-sm px-4 py-3 mt-3 focus:outline-none bg-gray-100 w-full"
@@ -237,18 +235,13 @@ const Register = () => {
               className="bg-gray-300 md:block hidden w-4/12"
             />
           </div>
-          <div className="grid md:grid-cols-2 gap-2 mt-7">
+          <div className="block mt-7">
             <div>
               <button
                 onClick={handleGoogleLogin}
                 className="text-center w-full text-white bg-orange-700 p-3 duration-300 rounded-sm hover:bg-blue-700"
               >
                 Google
-              </button>
-            </div>
-            <div>
-              <button className="text-center w-full text-white bg-slate-600 p-3 duration-300 rounded-sm hover:bg-blue-500">
-                GitHub
               </button>
             </div>
           </div>

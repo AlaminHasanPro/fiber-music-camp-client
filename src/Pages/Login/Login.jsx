@@ -169,7 +169,7 @@ const Login = () => {
               className="bg-gray-300 md:block hidden w-4/12"
             />
           </div>
-          <div className="grid md:grid-cols-2 gap-2 mt-7">
+          <div className="block mt-7">
             <div>
               <button
                 onClick={handleGoogleLogin}
@@ -178,11 +178,7 @@ const Login = () => {
                 Google
               </button>
             </div>
-            <div>
-              <button className="text-center w-full text-white bg-slate-600 p-3 duration-300 rounded-sm hover:bg-blue-500">
-                GitHub
-              </button>
-            </div>
+         
           </div>
           <p className="mt-12 text-xs text-center font-light text-gray-400">
             Dont have an account?
