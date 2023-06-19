@@ -10,6 +10,7 @@ import Pricing from "./Pricing";
 
 import { motion } from "framer-motion";
 import { Fade } from "react-awesome-reveal";
+import IndustrySection from "./IndustrySection";
 
 const Home = () => {
   const { popularClasses } = usePopularClasses();
@@ -52,6 +53,9 @@ const Home = () => {
       </Fade>
       <Fade delay={200}>
         <ExtraSection />
+      </Fade>
+      <Fade className="max-w-6xl mx-auto">
+        <IndustrySection />
       </Fade>
     </div>
   );

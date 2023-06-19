@@ -1,6 +1,25 @@
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+
+  const navOptions = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/instructors">Instructors</Link>
+      </li>
+      <li>
+        <Link to="/classes">Classes</Link>
+      </li>
+      <li>
+        <Link to="/dashboard">Dashboard</Link>
+      </li>
+
+
+    </>
+  );
   return (
     <>
       {/* component */}
@@ -25,25 +44,8 @@ const Footer = () => {
             </div>
             <div>
               <p className="font-semibold dark:text-white">Quick Link</p>
-              <div className="flex flex-col items-start mt-5 space-y-2">
-                <a
-                  href="#"
-                  className=" transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  Home
-                </a>
-                <a
-                  href="#"
-                  className="transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  Who We Are
-                </a>
-                <a
-                  href="#"
-                  className="transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
-                >
-                  Our Philosophy
-                </a>
+              <div className="flex flex-col items-start mt-5 space-y-2 list-none">
+               {navOptions}
               </div>
             </div>
             <div>
